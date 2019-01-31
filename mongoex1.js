@@ -1,0 +1,122 @@
+// var MongoClient = require('mongodb').MongoClient;
+//
+// var url = "mongodb://localhost:27017/Music";
+//
+// MongoClient.connect(url, function(err, db) {
+//   if (err) throw err;
+//   console.log(" created!");
+//   db.close();
+// });
+
+// var MongoClient = require('mongodb').MongoClient;
+// var url = "mongodb://localhost:27017/";
+// MongoClient.connect(url, function(err, db) {
+//   if (err) throw err;
+//   var dbo = db.db("Music");
+//   dbo.createCollection("songdetails", function(err, res) {
+//     if (err) throw err;
+//     console.log("Collection created!");
+//     db.close();
+//   });
+// });
+//
+// var MongoClient = require('mongodb').MongoClient;
+// var url = "mongodb://localhost:27017/";
+// MongoClient.connect(url, function(err, db) {
+//   if (err) throw err;
+//   var dbo = db.db("Music");
+//   var myobj = [
+//   {SongName:"Evano Oruvan", Film:"Alai Payuthey", MusicDirector:"A.R.Rahman",Singer:"Swarnalatha"},
+//   {SongName:"Roja Poonthoddam",Film:"Kannukkul Nilavu",MusicDirector:"Illayaraaja", Singer:"Unnikrishnan,Anuradha"},
+//   {SongName:"Vennilave Vennilave Vinaithaandi",Film:"Minsaara Kanavu", MusicDirector:"A.R.Rahman", Singer:"Hariharan,Sadhana Sargam"},
+//   {SongName:"Sollamal Thoddu Chellum",Film:"Dheena", MusicDirector:"Yuven Shankar Raja",Singer:"Hariharan"}
+// ];
+//   dbo.collection("songdetails").insertMany(myobj, function(err, res) {
+//     if (err) throw err;
+//     console.log("Number of documents inserted: " + res.insertedCount);
+//     db.close();
+//   });
+// });
+
+
+// var MongoClient = require('mongodb').MongoClient;
+// var url = "mongodb://localhost:27017/";
+//
+// MongoClient.connect(url, function(err, db) {
+//   if (err) throw err;
+//   var dbo = db.db("Music");
+//   dbo.collection("songdetails").find({}).toArray(function(err, result) {
+//     if (err) throw err;
+//     console.log(result);
+//     db.close();
+//   });
+// });
+
+// var MongoClient = require('mongodb').MongoClient;
+// var url = "mongodb://localhost:27017/";
+// MongoClient.connect(url, function(err, db) {
+//   if (err) throw err;
+//   var dbo = db.db("Music");
+//   //Find all documents in the customers collection:
+//   dbo.collection("songdetails").find({MusicDirector : "A.R.Rahman"}).toArray(function(err, result) {
+//     if (err) throw err;
+//     console.log(result);
+//     db.close();
+//   });
+// });
+
+// var MongoClient = require('mongodb').MongoClient;
+// var url = "mongodb://localhost:27017/";
+//
+// MongoClient.connect(url, function(err, db) {
+//   if (err) throw err;
+//   var dbo = db.db("Music");
+//   //Find all documents in the customers collection:
+//   dbo.collection("songdetails").find(({MusicDirector : 'A.R.Rahman'},{Singer : 'Unnikrishnan'})).toArray(function(err, result) {
+//     if (err) throw err;
+//     console.log(result);
+//     db.close();
+//   });
+// });
+
+// var MongoClient = require('mongodb').MongoClient;
+// var url = "mongodb://localhost:27017/";
+//
+// MongoClient.connect(url, function(err, db) {
+//   if (err) throw err;
+//   var dbo = db.db("Music");
+//   var myquery = { Film:"Alai Payuthey" };
+//   dbo.collection("songdetails").deleteOne(myquery, function(err, obj) {
+//     if (err) throw err;
+//     console.log("1 document deleted");
+//     db.close();
+//   });
+// });
+
+// var MongoClient = require('mongodb').MongoClient;
+// var url = "mongodb://localhost:27017/";
+//
+// MongoClient.connect(url, function(err, db) {
+//   if (err) throw err;
+//   var dbo = db.db("Music");
+//   var myobj =   {SongName:"Evano Oruvan",                    Film:"Alai Paayella",   MusicDirector:"pri",       Singer:"Swarnalatha"}
+// ;
+//   dbo.collection("songdetails").insertOne(myobj, function(err, res) {
+//     if (err) throw err;
+//     console.log("1 document inserted");
+//     db.close();
+//   });
+// });
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/";
+
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("Music");
+  //Find all documents in the customers collection:
+  dbo.collection("songdetails").find(({Singer : 'Unnikrishnan'})).toArray(function(err, result) {
+    if (err) throw err;
+    console.log(result);
+    db.close();
+  });
+});
